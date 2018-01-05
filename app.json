@@ -1,0 +1,21 @@
+{
+  "expo": {
+    "sdkVersion": "23.0.0",
+    "ios": {
+      "bundleIdentifier": "br.reactproj.test"
+    },
+    "android": {
+      "package": "br.reactproj.test",
+      "config": {
+  	     "googleMaps": {
+	         "apiKey": "AIzaSyCtLqqa5zpmz21sRDmQMibLIgkNx-Wfmus"
+	      }
+     }
+    },
+    "splash": {
+	  "image": "./assets/splash.png",
+	  "backgroundColor": "#FEF9B0"
+	}
+  },
+  
+}
