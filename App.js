@@ -9,10 +9,12 @@ export default class App extends React.Component {
     super(props);
     this.state = {isModalVisible:true, 
                   location: null,
-                  errorMessage: null};
+                  errorMessage: null,
+                  mapaCarregado : false};
     //BINDAR
     this.fechaModal = this.fechaModal.bind(this)
     this.abrirModal = this.abrirModal.bind(this)
+    this._getLocationAsync = this._getLocationAsync.bind(this)
   }
 
   componentWillMount() {
@@ -34,7 +36,8 @@ export default class App extends React.Component {
     }
 
     let location = await Location.getCurrentPositionAsync({});
-    this.setState({ location });
+    this.setState({ location : location,
+                    mapaCarregado: true });
   };
 
   fechaModal() {
@@ -58,7 +61,23 @@ export default class App extends React.Component {
       text = JSON.stringify(this.state.location);
     }
 
-   let mapa =  <MapView
+
+
+
+
+    return (
+     
+      <View style={styles.container}>
+        <Text> Posicao: {text}</Text>
+        <Text>Modal: {this.state.isModalVisible.toString()}</Text>
+        
+        <Button title="Abrir" onPress={this.abrirModal}  />
+        
+        <Modal visible={this.state.isModalVisible} onRequestClose={this.handleonRequestClose} animationType={'slide'}>
+          <Text>Estado: {this.state.isModalVisible.toString()}</Text>
+          <Button title="Fechar" onPress={this.fechaModal}  />
+          
+          {this.state.mapaCarregado ? <MapView
             style={{ flex: 1, height:'40%' }}
             initialRegion={{
               latitude: this.state.location.coords.latitude,
@@ -74,22 +93,12 @@ export default class App extends React.Component {
                 title="Minha localização"
                 description="Estou aqui"
               />
-          </MapView>;
+          </MapView> : null}
 
-    return (
-     
-      <View style={styles.container}>
-        <Text> Posicao: {text}</Text>
-        <Text>Modal: {this.state.isModalVisible.toString()}</Text>
-        
-        <Button title="Abrir" onPress={this.abrirModal}  />
-        
-        <Modal visible={this.state.isModalVisible} onRequestClose={this.handleonRequestClose} animationType={'slide'}>
-          <Text>Estado: {this.state.isModalVisible.toString()}</Text>
-          <Button title="Fechar" onPress={this.fechaModal}  />
-          {this.state.location.coords != null ? mapa : ''}
+
+
         </Modal>
-      
+        
       </View>
       
 
