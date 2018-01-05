@@ -1,16 +1,18 @@
+// adb shell input keyevent 82
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { MapVini } from './MapVini.js';
+import MapVini from './MapVini.js';
+
 
 export default class App extends React.Component {
   render() {
     return (
      
       <View style={styles.container}>
-        <Text>oi</Text>
         
-      </View>,
-      <MapVini/>
+         
+      </View>
+      
 
     );
   }
@@ -24,6 +26,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    height:'40%'
+    height:'20%'
   },
 });
