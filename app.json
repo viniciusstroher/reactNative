@@ -13,9 +13,12 @@
      }
     },
     "splash": {
-	  "image": "./assets/splash.png",
-	  "backgroundColor": "#FEF9B0"
-	}
+  	  "image": "./assets/splash.png",
+  	  "backgroundColor": "#FEF9B0"
+  	},
+    "icon" : {
+      "image": "./assets/icon.png"
+    }
   },
   
 }
