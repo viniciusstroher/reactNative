@@ -1,6 +1,6 @@
 // adb shell input keyevent 82
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,Modal } from 'react-native';
 import MapVini from './MapVini.js';
 
 
