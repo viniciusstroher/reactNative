@@ -2,6 +2,7 @@
 import React from 'react';
 import { StyleSheet, Text, View,Modal,Button  } from 'react-native';
 import MapVini from './MapVini.js';
+import { MapView } from 'expo';
 
 
 export default class App extends React.Component {
@@ -14,15 +15,15 @@ export default class App extends React.Component {
   }
 
   fechaModal() {
-    this.setState({ isModalVisible: false});
+    this.setState({ isModalVisible: false})
   }
 
   abrirModal() {
-    this.setState({ isModalVisible: true});
+    this.setState({ isModalVisible: true})
   }
 
   handleonRequestClose() {
-    e.preventDefault();
+    e.preventDefault()
   }
 
   render() {
@@ -31,13 +32,22 @@ export default class App extends React.Component {
      
       <View style={styles.container}>
         
-        <Text>Modal: {String(this.state.isModalVisible)}</Text>
+        <Text>Modal: {this.state.isModalVisible.toString()}</Text>
         
         <Button title="Abrir" onPress={this.abrirModal}  />
         
-        <Modal visible={this.state.isModalVisible} onRequestClose={this.handleonRequestClose}>
-          <Text>Estado: {String(this.state.isModalVisible)}</Text>
+        <Modal visible={this.state.isModalVisible} onRequestClose={this.handleonRequestClose} animationType={'slide'}>
+          <Text>Estado: {this.state.isModalVisible.toString()}</Text>
           <Button title="Fechar" onPress={this.fechaModal}  />
+           <MapView
+            style={{ flex: 1, height:'40%' }}
+            initialRegion={{
+              latitude: 37.78825,
+              longitude: -122.4324,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
+          />
         </Modal>
       
       </View>
